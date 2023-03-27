@@ -8,11 +8,11 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 ## Importations
 #############################################
 ## Model ------------------------------------
-with open('MLFLOW/model.pkl', 'rb') as file:
+with open('data\model.pkl', 'rb') as file:
     model = pickle.load(file)
     
 ## DATA ------------------------------------
-data = pd.read_csv('./data/application_test.csv')
+data = pd.read_csv('data/application_test.csv')
 
 #############################################
 ## Functions
@@ -20,7 +20,7 @@ data = pd.read_csv('./data/application_test.csv')
 ## Data preparation ------------------------------------
 def processData(features):
     import pickle
-    input1 = open("scaler.pickle", "rb")
+    input1 = open("data\scaler.pickle", "rb")
     scaler = pickle.load(input1)
     input1.close()
     
