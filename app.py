@@ -8,9 +8,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 ## Importations
 #############################################
 ## Model ------------------------------------
-with open('data/model.pkl', 'rb') as file:
-    model = pickle.load(file)
-    
+ model  =  pickle.load(open('data/model.pkl','rb'))
 ## DATA ------------------------------------
 data = pd.read_csv('data/application_test.csv')
 
