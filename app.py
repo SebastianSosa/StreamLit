@@ -114,9 +114,13 @@ st.pyplot(modelVisualization(model, data, select = idLOC))
 st.markdown("# Comparison of client features with the database")
 import plotly.express as px
 from statistics import mean
-fig = px.histogram(data.CNT_FAM_MEMBERS)
-fig.add_vline(x = mean(data.CNT_FAM_MEMBERS[idLOC[0]]), line_dash = 'dash', line_color = 'firebrick')
+
+var = data.columns
+varSelected = st.selectbox("Client variable to compare", var)
+fig = px.histogram(data[varSelected])
+fig.add_vline(x = mean(data[varSelected][idLOC[0]]), line_dash = 'dash', line_color = 'firebrick')
 st.plotly_chart(fig)
+
 
 
 ## RUN ML ML ------------------------------------
