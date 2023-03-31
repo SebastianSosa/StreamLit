@@ -3,6 +3,10 @@ import pickle
 import numpy as np
 import pandas as pd
 import sklearn
+import plotly.express as px
+from statistics import mean
+import plotly.graph_objects as go
+
 st.set_option('deprecation.showPyplotGlobalUse', False)
 #############################################
 ## Importations
@@ -112,16 +116,38 @@ st.pyplot(modelVisualization(model, data, select = idLOC))
 
 # Plot3 ------------------------------------
 st.markdown("# Comparison of client features with the database")
-import plotly.express as px
-from statistics import mean
-
 var = data.columns
 varSelected = st.selectbox("Client variable to compare", var)
-fig = px.histogram(data[varSelected])
-fig.add_vline(x = mean(data[varSelected][idLOC[0]]), line_dash = 'dash', line_color = 'firebrick')
-st.plotly_chart(fig)
 
+fig = go.Figure()
+fig.add_trace(go.Box(x = np.zeros(data.shape[0]), y=data[varSelected].tolist(), showlegend=False))
 
+fig.add_trace(go.Scatter(
+    x=[0.5], y=data[varSelected][idLOC[0]],
+    mode="markers",
+    name="Client position compare to other clients",
+    text=["Client"],
+    textposition="bottom center",
+    textfont=dict(
+        family="sans serif",
+        size=12,
+        color="LightSeaGreen"
+    ),
+    marker=dict(
+            color='LightSkyBlue',
+            size=1,
+            line=dict(
+                color='MediumPurple',
+                width=12
+            ),
+             symbol="diamond"
+        ),
+    showlegend=True
+))
+fig.update_layout(legend = dict(orientation="h", x = 0, y = -0.10))
+fig.update_xaxes(visible=False, showticklabels=False)
+fig.update_yaxes(title = varSelected)
+fig
 
 ## RUN ML ML ------------------------------------
 def show_predict_page():
