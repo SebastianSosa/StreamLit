@@ -104,6 +104,9 @@ idLOC = np.where(clientsIDS == id)
 st.markdown("# Predicted probabilities:")
 st.write(model.predict_proba(np.array(data.iloc[idLOC[0],:])))
 
+#############################################
+## PLots
+#############################################
 # Plot1 ------------------------------------
 st.markdown("# Features importance")
 explainer = shap.TreeExplainer(model.estimator)
@@ -149,7 +152,10 @@ fig.update_xaxes(visible=False, showticklabels=False)
 fig.update_yaxes(title = varSelected)
 fig
 
-## RUN ML ML ------------------------------------
-def show_predict_page():
-    st.title("Software client loane risk prediction")
-    st.write("### Import data")
+#############################################
+## sidebar
+#############################################
+st.sidebar.header("Modify client informations")
+var2 = data.columns
+var2Selected = st.sidebar.selectbox("Client variable to modify", var2)
+
