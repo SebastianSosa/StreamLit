@@ -97,10 +97,11 @@ def st_shap(plot, height=None):
 ## IDS ------------------------------------
 clientsIDS = data.SK_ID_CURR
 id = st.selectbox("Client ID", clientsIDS)
+index = np.where(data.SK_ID_CURR == clientsIDS)
 backup = data
 ## Process data for ML ------------------------------------
 
-r = requests.get("https://mlflowbank.drsosa.repl.co/get/" + str(id)).json()
+r = requests.get("https://mlflowbank.drsosa.repl.co/get/" + str(index)).json()
 data = processData(data)
 model.predict_proba(data[clientsIDS == id])
 
