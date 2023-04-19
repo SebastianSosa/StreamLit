@@ -108,7 +108,7 @@ model.predict_proba(data[clientsIDS == id])
 idLOC = np.where(clientsIDS == id)
 st.markdown("# Predicted probabilities:")
 st.write(model.predict_proba(np.array(data.iloc[idLOC[0],:])))
-st.write(index[0])
+st.write(index[0][0])
 #############################################
 ## PLots
 #############################################
