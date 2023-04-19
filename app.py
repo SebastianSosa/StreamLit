@@ -100,7 +100,7 @@ id = st.selectbox("Client ID", clientsIDS)
 backup = data
 ## Process data for ML ------------------------------------
 
-r = requests.get("https://mlflowbank.drsosa.repl.co/get/" + id)
+r = requests.get("https://mlflowbank.drsosa.repl.co/get/" + str(id))
 data = processData(data)
 model.predict_proba(data[clientsIDS == id])
 
