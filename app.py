@@ -101,7 +101,7 @@ index = np.where(data.SK_ID_CURR == id)
 backup = data
 ## Process data for ML ------------------------------------
 
-r = requests.get("https://mlflowbank.drsosa.repl.co/get/" + str(index[0])).json()
+#r = requests.get("https://mlflowbank.drsosa.repl.co/get/" + str(index[0])).json()
 data = processData(data)
 model.predict_proba(data[clientsIDS == id])
 
