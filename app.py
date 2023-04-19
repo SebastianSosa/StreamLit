@@ -97,7 +97,7 @@ def st_shap(plot, height=None):
 ## IDS ------------------------------------
 clientsIDS = data.SK_ID_CURR
 id = st.selectbox("Client ID", clientsIDS)
-index = np.where(data.SK_ID_CURR == clientsIDS)
+index = np.where(data.SK_ID_CURR == id)
 backup = data
 ## Process data for ML ------------------------------------
 
