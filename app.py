@@ -6,7 +6,7 @@ import sklearn
 import plotly.express as px
 from statistics import mean
 import plotly.graph_objects as go
-import request
+import requests
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 #############################################
