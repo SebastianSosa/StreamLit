@@ -6,6 +6,7 @@ import sklearn
 import plotly.express as px
 from statistics import mean
 import plotly.graph_objects as go
+import request
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 #############################################
@@ -98,12 +99,15 @@ clientsIDS = data.SK_ID_CURR
 id = st.selectbox("Client ID", clientsIDS)
 backup = data
 ## Process data for ML ------------------------------------
+
+r = requests.get("https://mlflowbank.drsosa.repl.co/get/" + id)
 data = processData(data)
 model.predict_proba(data[clientsIDS == id])
+
 idLOC = np.where(clientsIDS == id)
 st.markdown("# Predicted probabilities:")
 st.write(model.predict_proba(np.array(data.iloc[idLOC[0],:])))
-
+st.write(r)
 #############################################
 ## PLots
 #############################################
